@@ -56,7 +56,7 @@ public class MemberController {
 				model.addAttribute( "msg", "회원 정보가 없습니다. 메인 페이지로 이동합니다." );
 				model.addAttribute( "url", "/" );
 				
-				return "/member/messageAlert";  // messageAlert.html
+				return "member/messageAlert";  // messageAlert.html
 			}
 			
 			// 잘 되는지 콘솔에 출력
@@ -80,7 +80,7 @@ public class MemberController {
 			
 		}
 
-		return "/member/memberWriteFormNew"; // memberWriteFormNew.html
+		return "member/memberWriteFormNew"; // memberWriteFormNew.html
 	}
 
 	
@@ -109,7 +109,7 @@ public class MemberController {
 	        model.addAttribute("msg", "회원 등록이 처리되었습니다. 메인 페이지로 이동합니다.");
 	        model.addAttribute("url", "/");
 
-	        return "/member/messageAlert";  // messageAlert.html
+	        return "member/messageAlert";  // messageAlert.html
 
 	    } catch (Exception e) {
 	        // 에러 처리
@@ -203,7 +203,7 @@ public class MemberController {
 		// 객체 리스트 전달 - 모델에 담아서 리스트 페이지로 전달
 		model.addAttribute( "memberList", memberList );
 		
-		return "/member/memberList";  // memberList.html
+		return "member/memberList";  // memberList.html
 	}
 	
 	
