@@ -38,7 +38,7 @@ public class LoginController {
 	public String login(Model model) {
 		model.addAttribute( "memberDTO", new MemberDTO() );
 		
-	  return "/login/login";
+	  return "login/login";
 }
 
     @PostMapping("/loginCheck")
@@ -53,7 +53,7 @@ public class LoginController {
         if (admin_account_or_log_id.isEmpty() || ad_pw_or_log_pw.isEmpty()) {
             model.addAttribute("message", "error");
             model.addAttribute("memberDTO", new MemberDTO()); // memberDTO 추가
-            return "/login/login";
+            return "login/login";
         }
         
      // 관리자 로그인 확인
@@ -82,7 +82,7 @@ public class LoginController {
         } else {
             model.addAttribute("message", "error");
             model.addAttribute("memberDTO", new MemberDTO());
-            return "/login/login";
+            return "login/login";
         }
         // ac_num에 따른 처리
         if (ac_num == 1 || ac_num == 2 || ac_num == 3) {
@@ -104,7 +104,7 @@ public class LoginController {
                     model.addAttribute("threeDaysLater", threeDaysLater);
                     model.addAttribute("postTitle", loginService.getTitle(loginService.getPost_id(admin_account_or_log_id)));
                     model.addAttribute("memberDTO", new MemberDTO());
-                    return "/login/login";
+                    return "login/login";
                 }
             } else if (ac_num == 2) {
                 // 7일 후의 날짜 계산
@@ -121,7 +121,7 @@ public class LoginController {
                     model.addAttribute("sevenDaysLater", sevenDaysLater);
                     model.addAttribute("postTitle", loginService.getTitle(loginService.getPost_id(admin_account_or_log_id)));
                     model.addAttribute("memberDTO", new MemberDTO());
-                    return "/login/login";
+                    return "login/login";
                 }
             } else if (ac_num == 3) {
             	System.out.println("ac_num3=udateDate :" + updateDate);
@@ -130,10 +130,10 @@ public class LoginController {
                 model.addAttribute("acupdateDate", updateDate);
                 model.addAttribute("ac_num", ac_num);
                 model.addAttribute("memberDTO", new MemberDTO());
-                return "/login/login";
+                return "login/login";
             }
         }model.addAttribute("memberDTO", new MemberDTO());
-        return "/login/login";
+        return "login/login";
     }
 }
 	
