@@ -68,7 +68,7 @@ public class MainPageController {
 			model.addAttribute("posts", posts);
 			
 
-			return "/mainpage/mainpage";
+			return "mainpage/mainpage";
 	}
 	
 	@GetMapping("/mainpage/seclogin")
@@ -83,7 +83,7 @@ public class MainPageController {
 	    
 	    
 
-	   return "/mainpage/seclogin";
+	   return "mainpage/seclogin";
 	}
 	
 	@PostMapping("/mainpage/seclogincheck")
@@ -107,7 +107,7 @@ public class MainPageController {
 	}
 	
 	
-	@GetMapping("/mainpage/editinfo")
+	@GetMapping("mainpage/editinfo")
 	public String editInfo(@RequestParam("log_id") String log_id,
 						   @RequestParam("user_id") int user_id,
 	                       RedirectAttributes redirectAttributes,
@@ -128,7 +128,7 @@ public class MainPageController {
 		
 
 	    // 결과를 보여줄 뷰의 이름 반환
-	    return "/mainpage/editinfo"; // editinfo는 뷰의 이름으로 변경해야 합니다.
+	    return "mainpage/editinfo"; // editinfo는 뷰의 이름으로 변경해야 합니다.
 	}
 
 	

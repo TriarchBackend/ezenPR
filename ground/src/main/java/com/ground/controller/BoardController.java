@@ -38,7 +38,7 @@ public class BoardController {
 	@GetMapping("/board/write")
 	public String boardWriteForm() {
 		
-		return "/board/boardwrite";
+		return "board/boardwrite";
 		 
 	}
 	
@@ -48,15 +48,15 @@ public class BoardController {
 		if (post.getTitle() == null || post.getTitle().isEmpty()) {
 	        model.addAttribute("message", "제목을 입력하세요.");
 	        model.addAttribute("searchUrl", "/board/write");
-	        return "/board/message";
+	        return "board/message";
 	    } if (post.getCntent() == null || post.getCntent().isEmpty()) {
 	        model.addAttribute("message", "내용을 입력하세요.");
 	        model.addAttribute("searchUrl", "/board/write");
-	        return "/board/message";
+	        return "board/message";
 	    } if (file == null || file.isEmpty()) {
 	        model.addAttribute("message", "파일을 등록하세요.");
 	        model.addAttribute("searchUrl", "/board/write");
-	        return "/board/message";
+	        return "board/message";
 	    }
 
 	    boardService.write(post, file);
@@ -64,7 +64,7 @@ public class BoardController {
 	    model.addAttribute("message", "글 작성이 완료되었습니다.");
 	    model.addAttribute("searchUrl", "/board/list");
 
-	    return "/board/message";
+	    return "board/message";
 
 	}
 	
@@ -100,7 +100,7 @@ public class BoardController {
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
 		
-		return "/board/boardlist";
+		return "board/boardlist";
 		
 	}
 	
@@ -108,7 +108,7 @@ public class BoardController {
 	public String boardView(Model model, Integer id) {
 		
 		model.addAttribute("post", boardService.boardView(id));
-		return "/board/boardview";
+		return "board/boardview";
 		
 	}
 	
@@ -128,7 +128,7 @@ public class BoardController {
         model.addAttribute("message", "삭제가 완료되었습니다.");
         model.addAttribute("searchUrl", "/board/list");
 
-        return "/board/message";
+        return "board/message";
 	}
 	
 	@GetMapping("/board/modify/{id}")
@@ -136,7 +136,7 @@ public class BoardController {
 		
 		model.addAttribute("post", boardService.boardView(id));
 		
-		return "/board/boardmodify";
+		return "board/boardmodify";
 	}
 	
 	@PostMapping("/board/update/{id}")
@@ -153,7 +153,7 @@ public class BoardController {
 	    } if (file == null || file.isEmpty()) {
 	        model.addAttribute("message", "파일을 등록하세요.");
 	        model.addAttribute("searchUrl", "/board/modify/" +id);
-	        return "/board/message";
+	        return "board/message";
 	    } 
 	    
 	    Post postTemp = boardService.boardView(id);
@@ -172,7 +172,7 @@ public class BoardController {
 	    model.addAttribute("message", "수정이 완료되었습니다.");
 	    model.addAttribute("searchUrl", "/board/list");
 
-	    return "/board/message";
+	    return "board/message";
 	}
 
 	
